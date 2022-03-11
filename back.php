@@ -12,4 +12,4 @@ $amount_iva = $sub_total * floatval($iva) /100;
 $ammount_disccount = $sub_total * floatval($discount)/100;
 $total = $sub_total + floatval($amount_iva) - floatval($ammount_disccount) ;
 // var_dump($total);
-header('Location: '."index.php?isResp=1&name=".$_REQUEST['name']."&price=$price&ammount=$ammount&iva=$iva&discount=$ammount_disccount&subtotal=$sub_total&total=$total");
+header('Location: '."index.php?isResp=1&name=".$_REQUEST['name']."&price=$price&ammount=$ammount&iva=$amount_iva&discount=$ammount_disccount&subtotal=$sub_total&total=$total");

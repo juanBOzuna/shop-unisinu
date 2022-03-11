@@ -106,3 +106,22 @@
     color: white;
     text-align: center;
 }
+
+.btn-finish {
+    position: fixed;
+    width: 150px;
+    height: 55px;
+    background-color: teal;
+
+    line-height: 55px;
+
+    bottom: 30px;
+    right: 30px;
+
+    border-radius: 509px;
+    border-color: teal;
+}
+
+.btn-finish h4 {
+  color: white;
+}
