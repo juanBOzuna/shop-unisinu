@@ -1,6 +1,3 @@
-<?php   
-session_start();
-?>
 <html lang="en">
 
 <head>
@@ -8,7 +5,7 @@ session_start();
     <link rel="stylesheet" href="styles/forms.css">
     <link rel="stylesheet" href="styles/scroll.css">
 
-  <script src="js/index.js"></script>
+  <!-- <script src="js/index.js"></script> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +15,33 @@ session_start();
 <body>
     
     <?php 
-        if(isset($_REQUEST['isFinish'])){
-            session_destroy();
-        }
+  session_start();
+
+  function php_func(){
+    header('Location: '."index.php/");
+    }
+
+  $shop = array();
+  if(!isset($_SESSION["newsession"])){
+    $_SESSION["newsession"]=$shop;
+  }
+
+  if(isset($_REQUEST['isFinish'])){
+    session_destroy();
+  }
+
+  if( isset($_REQUEST['isResp']) &&  !isset($_REQUEST['isReload'] )){
+    $DataSnapshot =[
+        'name'=>$_REQUEST['name'],
+        'ammount'=> $_REQUEST['ammount'] ,
+        'price'=>$_REQUEST['price'] ,
+        'iva'=> $_REQUEST['iva'],
+        'discount' =>$_REQUEST['discount'] ,
+        'subtotal'=>$_REQUEST['subtotal'] ,
+        'total'=>  $_REQUEST['total'],
+    ];
+    array_push($_SESSION["newsession"], $DataSnapshot);   
+  }
     ?>
         <center>
             <div class="row">
@@ -69,9 +90,9 @@ session_start();
                        </tr>
                        </table>';
                    }else{
-                //    if(!isset($_REQUEST['isReload'])){
-                //     header('Location: '."index.php?isResp=1&isReload=1");
-                //    }
+                   if(!isset($_REQUEST['isReload'])){
+                    header('Location: '."index.php?isResp=1&isReload=1");
+                   }
                    $title = "";
                    $data = "";
                    $int =0;
@@ -132,5 +153,10 @@ session_start();
           </button >';
           }
         ?>
+    <script>
+        function clickMe(){
+            window.location.replace(window.location.href.replace('&isFinish=1', '') + "&isFinish=1" );
+        }     
+    </script>
 </body>
 </html>

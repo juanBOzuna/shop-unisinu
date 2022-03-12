@@ -59,6 +59,19 @@
     font-size: 125%;
     color: white;
 }
+.form-student .digit-calc2 {
+    align-items: center;
+    width: 100%;
+    background: var(--form-color);
+    padding: 4%;
+    border-radius: 4px;
+    margin-bottom: 5%;
+    border: 2px solid teal;
+    font-family: "calibri";
+    font-size: 125%;
+    color: white;
+}
+
 #text-descript p {
     height: 40px;
     text-align: center;
